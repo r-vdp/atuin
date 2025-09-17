@@ -11,7 +11,7 @@ pub fn init_static(disable_up_arrow: bool, disable_ctrl_r: bool) {
     if std::env::var("ATUIN_NOBIND").is_err() {
         const BIND_CTRL_R: &str = r"bind \cr _atuin_search";
         const BIND_CTRL_R_INS: &str = r"bind -M insert \cr _atuin_search";
-        const BIND_UP_ARROW_INS: &str = r"bind -M insert -k up _atuin_bind_up
+        const BIND_UP_ARROW_INS: &str = r"if string match -q '4.*' $version; bind -M insert up _atuin_bind_up; else; bind -M insert -k up _atuin_bind_up; end;
 bind -M insert \eOA _atuin_bind_up
 bind -M insert \e\[A _atuin_bind_up";
 
